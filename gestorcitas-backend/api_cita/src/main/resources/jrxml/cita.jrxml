@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Cita" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="665b4128-82bb-4512-9770-af52fe25dafe">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="nro" class="java.lang.String"/>
+	<parameter name="fecha" class="java.sql.Date"/>
+	<parameter name="nombre_estudiante" class="java.lang.String"/>
+	<parameter name="cedula" class="java.lang.String"/>
+	<parameter name="lineasCita" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="210" splitType="Stretch">
+			<image onErrorType="Icon">
+				<reportElement x="10" y="10" width="50" height="50" uuid="8d3921d2-de91-466c-a18d-b66734b0331e"/>
+				<imageExpression><![CDATA["classpath:jrxml/logo.jpg"]]></imageExpression>
+			</image>
+			<rectangle>
+				<reportElement x="210" y="2" width="129" height="37" forecolor="#0066FF" backcolor="#00AAFF" uuid="fec97762-7ea1-435a-b057-105faad3f28b"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="227" y="10" width="100" height="30" forecolor="#FFFFFF" uuid="b70f7a53-3562-4e66-b40b-eac2aaca8bb8"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cita Medica]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="80" width="100" height="30" uuid="a1a9eb6a-a772-438c-baf9-b90a7657dfcb"/>
+				<text><![CDATA[Paciente:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="120" width="100" height="30" uuid="23e2f8c6-a033-4200-bb39-7de829f37630"/>
+				<text><![CDATA[Cedula:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="327" y="80" width="100" height="30" uuid="ebc35f67-ac6f-4a02-9e6f-e1325ede50d8"/>
+				<text><![CDATA[Numero de Cita:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="327" y="120" width="100" height="30" uuid="3cc2346f-bfdd-4d08-ae39-d26effdb17eb"/>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="430" y="80" width="100" height="30" uuid="4398cd77-8f64-4530-a9d4-ea5cf631bfbf"/>
+				<textFieldExpression><![CDATA[$P{nro}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="430" y="120" width="100" height="30" uuid="1757d021-b6e2-4ee9-85d7-6cc5b1c0fcb9"/>
+				<textFieldExpression><![CDATA[$P{fecha}]]></textFieldExpression>
+				<patternExpression><![CDATA["dd-MM-YYYY"]]></patternExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="80" width="100" height="30" uuid="cde3c899-6869-4722-84e0-aa91812a8ee4"/>
+				<textFieldExpression><![CDATA[$P{nombre_estudiante}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="120" width="100" height="30" uuid="4e99bfe3-38dd-4c32-a126-dcd6314b6a28"/>
+				<textFieldExpression><![CDATA[$P{cedula}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="152" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="560" height="30" uuid="9a7ce793-5fc0-420a-a679-9a8250117519"/>
+				<dataSourceExpression><![CDATA[$P{lineasCita}]]></dataSourceExpression>
+				<subreportExpression><![CDATA["classpath:jrxml/detalledocente.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="0" y="40" width="560" height="30" uuid="7c1d1cab-11d5-4e22-ac11-99780ca60a04"/>
+				<dataSourceExpression><![CDATA[$P{lineasCita}]]></dataSourceExpression>
+				<subreportExpression><![CDATA["classpath:jrxml/detallesintomas.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="0" y="80" width="560" height="30" uuid="5c171d4c-d5f5-4366-ad87-64d3ae66e288"/>
+				<dataSourceExpression><![CDATA[$P{lineasCita}]]></dataSourceExpression>
+				<subreportExpression><![CDATA["classpath:jrxml/detalletratamiento.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="0" y="120" width="560" height="30" uuid="6db1c3ee-7a7f-40a1-9c82-130953b4091e"/>
+				<dataSourceExpression><![CDATA[$P{lineasCita}]]></dataSourceExpression>
+				<subreportExpression><![CDATA["classpath:jrxml/detalleagendar.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>

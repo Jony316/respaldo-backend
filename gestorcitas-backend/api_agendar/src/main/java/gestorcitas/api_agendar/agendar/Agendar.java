@@ -1,0 +1,18 @@
+package gestorcitas.api_agendar.agendar;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.Data;
+@Entity
+@Data
+public class Agendar {
+ @Id
+ @GeneratedValue(strategy = GenerationType.AUTO)
+ private Long id;
+ private String numero;
+ private String fecha;
+ private String hora; 
+}
+
